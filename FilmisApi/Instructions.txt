@@ -1,0 +1,37 @@
+﻿Domain: 
+
+Movie(Int Id, String Name, Int Year, List<Actor> Actors);
+Actor(Int Id, String Name);
+
+API:
+
+GET /api/movie - Gets all the movies
+GET /api/movie/{id} - Get a select movie
+POST  /api/movie - Adds a new movie
+PUT /api/movie/{id} - Updates a movie
+DELETE /api/movie/{id} - Deletes the movie
+
+GET /api/movie/{id}/actor - Gets the actors on a select movie
+POST /api/movie/{id}/actor - Adds a new actor to the movie
+PUT /api/movie/{id}/actor - Updates the actor on the movie
+DELETE /api/movie/{id}/actor - Deletes the actor from the movie
+
+GET /api/actor - Gets all the actors
+POST /api/actor - Adds a new actor
+PUT /api/actor - Updates an actor
+DELETE /api/actor - Delets an actor
+
+Requirements:
+
+RESTFUL-API in JSON
+Initalize a MSSQL database
+SOLID (DI)
+
+Using:
+.NET CORE 2.0
+MSSQL
+Github
+
+Improvments:
+TDD
+Containers
