@@ -1,41 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FilmisApi.Models;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FilmisApi.Controllers
 {
-    [Route("api/[controller]")]
-    public class MovieController : Controller
+    [Produces("application/json")]
+    [Route("api/Movies")]
+    public class MoviesController : Controller
     {
-        // GET: api/<controller>
+        // GET: api/Movies
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
+        // GET: api/Movies/5
+        [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
-
-        // POST api/<controller>
+        
+        // POST: api/Movies
         [HttpPost]
         public void Post([FromBody]string value)
         {
         }
-
-        // PUT api/<controller>/5
+        
+        // PUT: api/Movies/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
-
-        // DELETE api/<controller>/5
+        
+        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
