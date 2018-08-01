@@ -1,34 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using FilmisApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmisApi.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Movies")]
-    public class MoviesController : Controller
+    [Route("api/[controller]")]
+    public class MoviesController : ControllerBase
     {
+        private readonly MovieContext _movieContext;
+
+        public MoviesController(MovieContext movieContext)
+        {
+            _movieContext = movieContext;
+
+            var myMovies = new List<Movie>()
+            {               
+                new Movie { Name = "Space Jam", Year = 1996, Actors = {}},
+                new Movie { Name = "Uncle Drew", Year = 2018, Actors = {}},
+            };
+
+            if (_movieContext.Movies.Count() == 0)
+            {
+                _movieContext.Movies.AddRange(myMovies);
+                _movieContext.SaveChanges();                
+            }            
+        }
+
         // GET: api/Movies
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Movie> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return _movieContext.Movies.ToList();            
         }
 
         // GET: api/Movies/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = "GetMovie")]
+        public IActionResult GetByID(int id)
         {
-            return "value";
+            var movie = _movieContext.Movies.Find(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            return Ok(movie);            
         }
         
         // POST: api/Movies
         [HttpPost]
-        public void Post([FromBody]string value)
-        {
+        public IActionResult Create([FromBody] Movie movie)
+        {            
+            if (movie == null)
+                return BadRequest();
+
+            _movieContext.Movies.Add(movie);
+            _movieContext.SaveChanges();
+
+            return CreatedAtRoute("GetMovie", new { id = movie.Id }, movie);
         }
         
         // PUT: api/Movies/5
