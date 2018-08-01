@@ -21,8 +21,6 @@ namespace FilmisApi
         {
             services.AddDbContext<MovieContext>(ctx => 
                 ctx.UseInMemoryDatabase("MovieList"));
-            services.AddDbContext<ActorContext>(ctx =>
-               ctx.UseInMemoryDatabase("ActorList"));
 
             services.AddMvc();
         }
