@@ -67,9 +67,9 @@ namespace FilmisApi.Controllers
 
         // PUT: api/Actors/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateActor([FromRoute] int id, [FromBody] Actor actor)
+        public async Task<IActionResult> UpdateActor(int id, [FromBody] Actor actor)
         {
-            if (id != actor.Id)            
+            if (actor == null || actor.Id != id)            
                 return BadRequest();
             
 
@@ -99,6 +99,7 @@ namespace FilmisApi.Controllers
         public async Task<IActionResult> DeleteActor([FromRoute] int id)
         {
             var actor = await _context.Actors.SingleOrDefaultAsync(m => m.Id == id);
+
             if (actor == null)            
                 return NotFound();            
 

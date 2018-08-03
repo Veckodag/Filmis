@@ -19,8 +19,12 @@ namespace FilmisApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MovieContext>(ctx => 
-                ctx.UseInMemoryDatabase("MovieList"));
+            //Testing stuff
+            services.AddDbContext<MovieContext>(ctx => ctx.UseInMemoryDatabase("MovieList"));
+
+            //Scary connectionstring
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            //services.AddDbContext<MovieContext>(ctx => ctx.UseSqlServer(connection));
 
             services.AddMvc();
         }

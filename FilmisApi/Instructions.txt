@@ -1,4 +1,5 @@
-﻿Domain: 
+﻿https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db
+Domain: 
 
 Movie(Int Id, String Name, Int Year, List<Actor> Actors);
 Actor(Int Id, String Name);
@@ -18,8 +19,8 @@ DELETE /api/movie/{id}/actor - Deletes the actor from the movie
 
 GET /api/actor - Gets all the actors
 POST /api/actor - Adds a new actor
-PUT /api/actor - Updates an actor
-DELETE /api/actor - Delets an actor
+PUT /api/actor/{id} - Updates an actor
+DELETE /api/actor/{id} - Deletes an actor
 
 Requirements:
 

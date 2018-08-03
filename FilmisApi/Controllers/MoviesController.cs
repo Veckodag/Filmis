@@ -9,7 +9,7 @@ namespace FilmisApi.Controllers
     [Route("api/[controller]")]
     public class MoviesController : ControllerBase
     {
-        private readonly MovieContext _context;        
+        private readonly MovieContext _context;
 
         public MoviesController(MovieContext movieContext)
         {
@@ -31,7 +31,7 @@ namespace FilmisApi.Controllers
             }
 
             var myMovies = new List<Movie>()
-            {               
+            {
                 new Movie { Name = "Space Jam", Year = 1996, Actors = _context.Actors.Take(2).ToList()},
                 new Movie { Name = "Uncle Drew", Year = 2018, Actors = _context.Actors.Skip(2).Take(2).ToList()},
             };
@@ -39,15 +39,27 @@ namespace FilmisApi.Controllers
             if (_context.Movies.Count() == 0)
             {
                 _context.Movies.AddRange(myMovies);
-                _context.SaveChanges();                
-            }            
+                _context.SaveChanges();
+            }
         }
 
         // GET: api/Movies
         [HttpGet]
         public IEnumerable<Movie> GetMovies()
         {
-            return _context.Movies.ToList();            
+            return _context.Movies.ToList();
+        }
+
+        //GET: api/Movies/5/actors
+        [HttpGet("{id}/actors", Name = "GetActors")]
+        public IActionResult GetTheActorsFromTheMovie(int id)
+        {
+            var movie = _context.Movies.Find(id);
+
+            if (movie == null)            
+                return NotFound();
+
+            return Ok(movie.Actors);            
         }
 
         // GET: api/Movies/5
