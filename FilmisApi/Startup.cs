@@ -20,13 +20,12 @@ namespace FilmisApi
         public void ConfigureServices(IServiceCollection services)
         {
             //Testing stuff
-            services.AddDbContext<MovieContext>(ctx => ctx.UseInMemoryDatabase("MovieList"));
-
-            //Scary connectionstring
-            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
-            //services.AddDbContext<MovieContext>(ctx => ctx.UseSqlServer(connection));
+            //services.AddDbContext<MovieContext>(ctx => ctx.UseInMemoryDatabase("MovieList"));
 
             services.AddMvc();
+            //Scary connectionstring
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<MovieContext>(ctx => ctx.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

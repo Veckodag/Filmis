@@ -16,21 +16,6 @@ namespace FilmisApi.Controllers
         public ActorsController(MovieContext context)
         {
             _context = context;
-
-            var myActors = new List<Actor>()
-            {
-                new Actor { Name = "Will Ferrell"},
-                new Actor { Name = "Woody Harrelson" },
-                new Actor { Name = "Samuel L. Jackson" },
-                new Actor { Name = "Denzel Washington" },
-                new Actor { Name = "Wesley Snipes"}
-            };
-
-            if (_context.Actors.Count() == 0)
-            {
-                _context.Actors.AddRange(myActors);
-                _context.SaveChanges();
-            }
         }
 
         // GET: api/Actors

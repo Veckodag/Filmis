@@ -13,34 +13,7 @@ namespace FilmisApi.Controllers
 
         public MoviesController(MovieContext movieContext)
         {
-            _context = movieContext;
-
-
-            var myActors = new List<Actor>()
-            {
-                new Actor { Name = "Michael Jordan"},
-                new Actor { Name = "Bill Murray" },
-                new Actor { Name = "Kyrie Irving" },
-                new Actor { Name = "Nate Robinson" }
-            };
-
-            if (_context.Actors.Count() == 0)
-            {
-                _context.Actors.AddRange(myActors);
-                _context.SaveChanges();
-            }
-
-            var myMovies = new List<Movie>()
-            {
-                new Movie { Name = "Space Jam", Year = 1996, Actors = _context.Actors.Take(2).ToList()},
-                new Movie { Name = "Uncle Drew", Year = 2018, Actors = _context.Actors.Skip(2).Take(2).ToList()},
-            };
-
-            if (_context.Movies.Count() == 0)
-            {
-                _context.Movies.AddRange(myMovies);
-                _context.SaveChanges();
-            }
+            _context = movieContext; 
         }
 
         // GET: api/Movies
@@ -86,10 +59,43 @@ namespace FilmisApi.Controllers
 
             return CreatedAtRoute("GetMovie", new { id = movie.Id }, movie);
         }
-        
+
+        // PUT: api/Movies/5/actors
+        [HttpPut("{id}/actors", Name = "CreateActorToTheMovie")]
+        public IActionResult CreateActorAndAddHimToTheMovie(int id, [FromBody]Actor actor)
+        {
+            if (actor == null)
+                return BadRequest();
+
+            var selectedMovie = _context.Movies.Find(id);
+
+            if (selectedMovie == null)
+                return NotFound();
+
+            _context.Actors.Add(actor);
+            _context.SaveChanges();
+
+            var myActor = _context.Actors.Last();
+
+            // A movie might not yet have actors
+            if (selectedMovie.Actors != null)
+            {
+                selectedMovie.Actors.Add(myActor);
+            }
+            else
+            {
+                selectedMovie.Actors = new List<Actor>() { myActor };
+            }
+
+            _context.Movies.Update(selectedMovie);
+            _context.SaveChanges();
+
+            return Ok(selectedMovie);
+        }
+
         // PUT: api/Movies/5
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]Movie movie)
+        public IActionResult UpdateTheMovie(int id, [FromBody]Movie movie)
         {
             if (movie == null || movie.Id != id)
                 return BadRequest();
