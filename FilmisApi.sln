@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmisApi", "FilmisApi\FilmisApi.csproj", "{8DE2123B-2C76-4EB0-ABD7-A9348E14712C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmisTests", "FilmisTests\FilmisTests.csproj", "{7D50C25E-C578-4927-8728-5CBC2EAE2851}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,22 @@ Global
 		{8DE2123B-2C76-4EB0-ABD7-A9348E14712C}.Release|x64.Build.0 = Release|Any CPU
 		{8DE2123B-2C76-4EB0-ABD7-A9348E14712C}.Release|x86.ActiveCfg = Release|Any CPU
 		{8DE2123B-2C76-4EB0-ABD7-A9348E14712C}.Release|x86.Build.0 = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|x64.Build.0 = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|ARM.Build.0 = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|x64.ActiveCfg = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|x64.Build.0 = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D50C25E-C578-4927-8728-5CBC2EAE2851}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

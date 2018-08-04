@@ -1,4 +1,4 @@
-﻿https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db
+﻿https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-2.0&tabs=aspnetcore2x
 Domain: 
 
 Movie(Int Id, String Name, Int Year, List<Actor> Actors);
